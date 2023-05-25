@@ -1,0 +1,8 @@
+﻿  Profile.cpp
+  Super_Enemy.cpp
+C:\Users\User\Desktop\C-project-main\Super_Enemy.cpp(32,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Desktop\C-project-main\Super_Enemy.cpp(32,49): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Desktop\C-project-main\Super_Enemy.cpp(38,78): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\User\Desktop\C-project-main\Super_Enemy.cpp(38,49): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+  Project1.vcxproj -> C:\Users\User\Desktop\C-project-main\x64\Debug\Project1.exe
