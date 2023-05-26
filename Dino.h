@@ -8,8 +8,9 @@ public:
     Dino();
     void move();
     bool isCollidingWith(const sf::Sprite& sprite) const;
-    void draw(sf::RenderWindow& window, sf::Sprite dinoo) ;
+    void draw(sf::RenderWindow& window, sf::Sprite* dinoo) ;
     sf::Sprite m_sprite;
+    sf::Sprite dino;
 private:
     
     

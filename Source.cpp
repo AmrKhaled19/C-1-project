@@ -71,7 +71,7 @@ int main()
                 gameState = GameState::Menu;
             }
             break;
-        
+
         case GameState::Menu:
             window.clear();
             window.draw(background);
@@ -89,7 +89,15 @@ int main()
             if (menu.isDifficultySelected()) {
                 gameState = GameState::ScenerySelection;
             }
+            else if (menu.isOptionSelected() == false)
+            {
+                
+
+                gameState = GameState::Menu;
+                
+            }
             break;
+        
 
         case GameState::ScenerySelection:
             window.clear();
@@ -111,7 +119,7 @@ int main()
             window.clear();
             menu.HowToPlay(window);
             if (menu.ishowtoplay()) {
-                gameState = GameState::Playing;
+                gameState = GameState::ChooseProfile;
                 sf::Sprite background = menu.getBackground();
                 game.start(background);
             }
@@ -127,7 +135,9 @@ int main()
             break;
         case GameState::Playing:
             window.clear();
+            
             dino.draw(window, menu.getchar());
+            game.start(background);
             game.processEvents();
             dino.move();
             enemy.move();

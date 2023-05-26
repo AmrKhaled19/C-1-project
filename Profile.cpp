@@ -45,17 +45,17 @@ void profile::SortProfil(vector<int>)
 
 }
 
-vector<string> profile::getAllProfNames()
-{
-	vector <string> ProfileNames;
-	ifstream file("Profiles.txt");
-	if (file.is_open()) {
-		string name;
-		while (getline(file, name)) {
-			ProfileNames.push_back(name);
-		}
-	}
-}
+//vector<string> profile::getAllProfNames()
+//{
+//	vector <string> ProfileNames;
+//	ifstream file("Profiles.txt");
+//	if (file.is_open()) {
+//		string name;
+//		while (getline(file, name)) {
+//			ProfileNames.push_back(name);
+//		}
+//	}
+//}
 
 void profile::loadingScores()
 {

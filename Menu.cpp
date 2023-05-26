@@ -199,7 +199,29 @@ void Menu::selectDifficulty() {
                 }
                 else if (event.key.code == sf::Keyboard::Enter || event.key.code == sf::Keyboard::Space) {
                     m_diffSelected = selectedIndex + 1;
+
                     return;
+                }
+                else if (event.key.code == sf::Keyboard::BackSpace ) {
+                    m_window.clear()
+                        ;
+                    m_optionSelected = false;
+                    displayMenu();
+                    processEvents();
+
+                    return;
+                }
+                else if (event.key.code == sf::Keyboard::M) {
+                    // Pause the music
+                    if (m_music.getStatus() == sf::Music::Playing) {
+                        m_music.pause();
+                    }
+                }
+                else if (event.key.code == sf::Keyboard::N) {
+                    // Pause the music
+                    if (m_music.getStatus() == sf::Music::Paused) {
+                        m_music.play();
+                    }
                 }
             }
 
@@ -256,26 +278,6 @@ void Menu::processEvents1() {
         }
     }
 }
-
-//void Menu::displayMenu()
-//{
-//    if (m_startingScreenVisible) {
-//        for (const auto& column : m_colorColumns) {
-//            m_window.draw(column);
-//        }
-//        m_window.draw(m_gameName);
-//        m_window.draw(m_pressAnyButton);
-//    }
-//    else {
-//        clock.draw(m_window);
-//        clock.update();
-//        m_window.draw(m_title);
-//        m_window.draw(m_playOption);
-//        m_window.draw(m_playOption2);
-//        m_window.draw(m_exitOption);
-//        m_window.draw(m_wButton);
-//    }
-//}
 
 void Menu::processEvents() {
     sf::Event event;
@@ -432,20 +434,28 @@ void Menu::about() {
         m_window.clear();
         m_window.draw(aboutBackground);
         m_window.draw(aboutText);
+        m_window.draw(aboutTex);
+        m_window.draw(aboutTe);
+
+        m_window.draw(aboutT);
+
         m_window.display();
     }
 }
 void Menu::displayProfileMenu()
 {
-    if (m_startingScreenVisible) {
+    if (m_window.isOpen()) {
+        m_window.clear();
         for (const auto& column : m_colorColumns) {
             m_window.draw(column);
         }
         m_window.draw(p_Guest);
         m_window.draw(p_CreateUser);
+        m_window.display();
     }
     else
     {
+        m_window.clear();
         clock.draw(m_window);
         clock.update();
         clock.draw(m_window);
@@ -453,7 +463,9 @@ void Menu::displayProfileMenu()
         m_window.draw(m_title);
         m_window.draw(p_Guest);
         m_window.draw(p_CreateUser);
+        m_window.display();
     }
+
 }
 
 void Menu::displayMenu()
@@ -700,7 +712,11 @@ void Menu::ScenerySelection(sf::RenderWindow& m_window) {
 
             // Check for backspace to go to the previous enum
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace)) {
-                // Go to the previous enum
+                m_window.clear();
+                m_optionSelected = false ;
+                displayMenu();
+                processEvents();
+
 
                 return;
             }
@@ -765,7 +781,7 @@ void Menu::CharacterSelection(sf::RenderWindow& m_window) {
             // Check for mouse click or keyboard selection
             if ((sf::Mouse::isButtonPressed(sf::Mouse::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) ) {
                 // Save the selected character and return
-                dino = charr;
+                dino = &charr;
                 return;
             }
 
@@ -788,7 +804,7 @@ void Menu::CharacterSelection(sf::RenderWindow& m_window) {
     }
 }
 
-sf::Sprite Menu:: getdino()
+sf::Sprite * Menu:: getdino()
 {
     return dino;
 }

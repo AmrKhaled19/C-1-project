@@ -30,7 +30,15 @@ void Game::start(sf::Sprite background) {
    
     backgroundImage = background;
     backgroundImage.setScale(1.0f, 1.0f); // Adjust the scale as needed
-    m_window.draw(backgroundImage);
+    sf::Sprite bk ;
+    sf::Texture bkk;
+    if (!bkk.loadFromFile("images/background.png")) {
+        // Handle error
+    }
+
+
+    bk.setTexture(bkk);
+    m_window.draw(bk);
     m_window.display();
     m_running = true;
 }
@@ -50,23 +58,22 @@ void Game::processEvents() {
             m_window.close();
         }
         else if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code == sf::Keyboard::Space) {
-                // Jump
-                // If 'W' is pressed twice, perform double jump
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-                    m_doubleJumpSound.play();
+            if (event.key.code == sf::Keyboard::W) {
+
+                m_doubleJumpSound.play();
+            }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                    
                     m_duckSound.play();
                 }
-                else {
-                    m_jumpSound.play();
-                }
+                
             }
             
             
         }
         
     }
-}
+
 
 
 void Game::update(  Enemy& enemy, Super_Enemy& superEnemy, Bullet& bullet) {

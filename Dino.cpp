@@ -11,16 +11,16 @@ void Dino::move() {
 
     // Update velocity based on which keys are pressed
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        m_velocity.y = -5;
+        m_velocity.y = -3;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        m_velocity.y = 5;
+        m_velocity.y = 3;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        m_velocity.x = -5;
+        m_velocity.x = -3;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        m_velocity.x = 5;
+        m_velocity.x = 3;
     }
 
     // Handle jumping
@@ -29,7 +29,7 @@ void Dino::move() {
     }
 
     // Update position based on velocity
-    m_sprite.move(m_velocity);
+     dino .move(m_velocity);
 
     // Clamp position to screen bounds
     sf::Vector2f position = m_sprite.getPosition();
@@ -44,12 +44,19 @@ void Dino::move() {
     
 }
 
-bool Dino::isCollidingWith(const sf::Sprite& sprite) const {
-    return m_sprite.getGlobalBounds().intersects(sprite.getGlobalBounds());
+bool Dino::isCollidingWith(const sf::Sprite& dino) const {
+    return dino.getGlobalBounds().intersects(dino.getGlobalBounds());
 }
 
-void Dino::draw(sf::RenderWindow& window, sf::Sprite dinoo)  {
-    m_sprite = dinoo;
-    window.draw(m_sprite);
+void Dino::draw(sf::RenderWindow& window, sf::Sprite* dinoo)  {
+    m_sprite = *dinoo;
+    sf::Texture dinooo;
+        if (!dinooo.loadFromFile("images/dino.png")) {
+            // Handle error
+        }
+    
+
+    dino.setTexture(dinooo);
+    window.draw(dino);
 
 }

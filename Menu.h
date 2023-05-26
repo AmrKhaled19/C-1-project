@@ -52,8 +52,8 @@ bool ishowtoplay() const {
     return howtoplay;
 }
 sf::Sprite charr;
-sf::Sprite dino;
-sf::Sprite getdino();
+sf::Sprite *dino;
+sf::Sprite* getdino();
 
 void setBackground(sf::Sprite& Background) {
     background = Background;
@@ -63,10 +63,10 @@ sf::Sprite getBackground() const {
 }
 
 void setchar(sf::Sprite& charr) {
-    dino = charr;
+    dino = &charr;
 }
-sf::Sprite getchar() const {
-    return dino;
+sf::Sprite *  getchar()  {
+    return  dino;
 }
 private:
     sf::Sprite m_background;
